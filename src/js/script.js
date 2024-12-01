@@ -4,9 +4,9 @@ function updateClock() {
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    const secondHand = document.getElementById('second-hand');
-    const minuteHand = document.getElementById('minute-hand');
-    const hourHand = document.getElementById('hour-hand');
+    const secondHand = document.getElementById('sc');
+    const minuteHand = document.getElementById('mn');
+    const hourHand = document.getElementById('hr');
 
     const secondDegrees = ((seconds / 60) * 360) + 90;
     const minuteDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
