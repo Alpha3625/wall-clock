@@ -1,0 +1,212 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    margin: 0;
+}
+
+.main {
+    padding-top: 200px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.clock {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background: url("../assets/1685442637_celes-club-p-risunok-tsiferblata-chasov-so-strelkami-ri-5.jpg") center no-repeat;
+    background-size: 100% 100%;
+    border: 10px solid #0491e3;
+    border-radius: 50%;
+    box-shadow: 0 0 100px 30px rgb(0, 136, 255), inset 0 0 100px 10px rgb(0, 0, 0);
+    position: relative;
+}
+
+.clock:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 2px solid rgb(175, 175, 175);
+    border-radius: 50%;
+}
+
+.center {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    border: 2px solid gray;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    position: absolute;
+    top: 48%;
+    right: 0;
+    left: 0;
+}
+
+.hand {
+    margin: 0 auto;
+    transform-origin: top;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    transform: rotate(90deg);
+}
+
+#second-hand {
+    background-color: red;
+    width: 230px;
+    height: 2px;
+}
+
+#minute-hand {
+    background-color: #000000;
+    width: 150px;
+    height: 5px;
+    margin-left: 12px;
+}
+
+#hour-hand {
+    background-color: #FFAA4C;
+    width: 100px;
+    height: 5px;
+    margin-left: 12px;
+}
+
+.lights {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1000;
+}
+
+.light {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: rgb(0, 157, 255);
+    filter: blur(8px);
+    box-shadow: 0 0 50px 20px rgb(0, 204, 255);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.x1 {
+    top: 400%;
+    right: 60px;
+    animation: light 5.3s infinite linear;
+}
+
+.x2 {
+    top: 50%;
+    left: 10%;
+    animation: light 4s infinite linear;
+}
+
+.x3 {
+    top: 300%;
+    left: 0;
+    animation: light 3s infinite linear;
+}
+
+.x4 {
+    top: 0;
+    right: 8%;
+    animation: light 2.5s infinite linear;
+}
+
+.x5 {
+    top: 0;
+    right: 0;
+    left: 0;
+    animation: light 5s infinite linear;
+}
+
+.x6 {
+    top: 440%;
+    left: 30%;
+    animation: light 7s infinite linear;
+}
+
+.x7 {
+    top: 50%;
+    right: 400px;
+    animation: light 3.6s infinite linear;
+}
+
+.x8 {
+    top: 100%;
+    right: 640px;
+    animation: light 6s infinite linear;
+}
+
+.x9 {
+    top: 200%;
+    left: 40%;
+    animation: light 3.1s infinite linear;
+}
+
+.x10 {
+    top: 300%;
+    right: 30%;
+    animation: light 4s infinite linear;
+}
+
+@keyframes light {
+    0% {
+        top: 100vh;
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        top: 0vh;
+        opacity: .8;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        top: -100vh;
+        opacity: 0;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .main {
+        padding-top: 100px;
+    }
+
+    .clock {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .main {
+        padding-top: 50px;
+    }
+
+    .clock {
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .clock {
+        height: 300px;
+    }
+}
