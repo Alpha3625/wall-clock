@@ -1,0 +1,91 @@
+.clock {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background: url("../assets/1685442637_celes-club-p-risunok-tsiferblata-chasov-so-strelkami-ri-5.jpg") center no-repeat;
+    background-size: 100% 100%;
+    border: 10px solid #0491e3;
+    border-radius: 50%;
+    box-shadow: 0 0 100px 30px rgb(0, 136, 255), 0 -15px 15px rgba(134, 134, 134, 0.35),
+        inset 0 -15px 15px #191919, 0 15px 15px rgba(134, 134, 134, 0.35), inset 0 15px 15px #191919;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+}
+
+.clock:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    border: 2px solid rgb(175, 175, 175);
+    border-radius: 50%;
+    z-index: 999;
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+    position: absolute;
+}
+
+.clock>.hour,
+.hr {
+    width: 160px;
+    height: 160px;
+}
+
+.clock>.min,
+.mn {
+    width: 190px;
+    height: 190px;
+}
+
+.clock>.sec,
+.sc {
+    width: 230px;
+    height: 230px;
+}
+
+.hr,
+.mn,
+.sc {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hr:before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 80px;
+    background-color: black;
+    z-index: 10;
+    border-radius: 6px 6px 0 0;
+}
+
+.mn:before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 120px;
+    background-color: #FFAA4C;
+    z-index: 11;
+    border-radius: 6px 6px 0 0;
+}
+
+.sc:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background-color: red;
+    z-index: 12;
+    border-radius: 6px 6px 0 0;
+}

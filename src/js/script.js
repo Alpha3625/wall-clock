@@ -1,16 +1,19 @@
 function updateClock() {
     const now = new Date();
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
-    const hours = now.getHours();
+    const utcOffset = now.getTimezoneOffset() * 60000;
+    const moscowTime = new Date(now.getTime() + utcOffset + 3 * 3600000);
+
+    const hours = moscowTime.getHours();
+    const minutes = moscowTime.getMinutes();
+    const seconds = moscowTime.getSeconds();
 
     const secondHand = document.getElementById('sc');
     const minuteHand = document.getElementById('mn');
     const hourHand = document.getElementById('hr');
 
-    const secondDegrees = ((seconds / 60) * 360) + 90;
-    const minuteDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
-    const hourDegrees = ((hours / 12) * 360) + ((minutes / 60) * 30) + 90;
+    const secondDegrees =  seconds * 6;
+    const minuteDegrees = (minutes * 6) + (seconds / 60) * 6;
+    const hourDegrees = (hours % 12) * 30 + (minutes / 60) * 30;
 
     secondHand.style.transform = `rotate(${secondDegrees}deg)`;
     minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
@@ -18,5 +21,4 @@ function updateClock() {
 }
 
 setInterval(updateClock, 1000);
-
 updateClock();
