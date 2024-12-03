@@ -3,7 +3,7 @@
     max-width: 500px;
     height: 500px;
     margin: 0 auto;
-    background: url("../assets/1685442637_celes-club-p-risunok-tsiferblata-chasov-so-strelkami-ri-5.jpg") center no-repeat;
+    background: #0491e3 url("../assets/clock-face.jpg") center no-repeat;
     background-size: 100% 100%;
     border: 10px solid #0491e3;
     border-radius: 50%;
@@ -65,7 +65,7 @@
     position: absolute;
     width: 8px;
     height: 80px;
-    background-color: black;
+    background-color: #000000;
     z-index: 10;
     border-radius: 6px 6px 0 0;
 }
@@ -85,7 +85,24 @@
     position: absolute;
     width: 2px;
     height: 150px;
-    background-color: red;
+    background-color: #ff0000;
     z-index: 12;
     border-radius: 6px 6px 0 0;
+}
+
+.buttons-wrapper {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#turn-on-button,
+#turn-off-button {
+    background-color: #0491e3;
+    color: #fff;
+    padding: 5px 40px;
+    cursor: pointer;
+}
+
+#turn-on-button {
+    margin-right: 10px;
 }

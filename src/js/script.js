@@ -1,24 +1,54 @@
 function updateClock() {
     const now = new Date();
-    const utcOffset = now.getTimezoneOffset() * 60000;
-    const moscowTime = new Date(now.getTime() + utcOffset + 3 * 3600000);
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
 
-    const hours = moscowTime.getHours();
-    const minutes = moscowTime.getMinutes();
-    const seconds = moscowTime.getSeconds();
-
-    const secondHand = document.getElementById('sc');
-    const minuteHand = document.getElementById('mn');
     const hourHand = document.getElementById('hr');
+    const minuteHand = document.getElementById('mn');
+    const secondHand = document.getElementById('sc');
 
-    const secondDegrees =  seconds * 6;
-    const minuteDegrees = (minutes * 6) + (seconds / 60) * 6;
-    const hourDegrees = (hours % 12) * 30 + (minutes / 60) * 30;
+    const hourDegrees = 30 * (hours % 12) + 0.5 * minutes;
+    const minuteDegrees = 6 * minutes + 0.1 * seconds;
+    const secondDegrees = 6 * seconds;
 
-    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
-    minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+let clockInterval = null;
+const turnOnBtn = document.getElementById("turn-on-button");
+const turnOffBtn = document.getElementById("turn-off-button");
+turnOffBtn.style.backgroundColor = "#ff0000";
+
+function initializeClock() {
+    const isClockOn = localStorage.getItem('clockStatus') === 'on';
+    if (isClockOn) {
+        turnOn();
+    } else {
+        turnOff();
+    }
+}
+
+function turnOn() {
+    if (!clockInterval) {
+        turnOnBtn.style.backgroundColor = "#008000";
+        turnOffBtn.style.backgroundColor = "#0491e3";
+        clockInterval = setInterval(updateClock, 1000);
+        localStorage.setItem('clockStatus', 'on');
+    }
+}
+
+function turnOff() {
+    turnOffBtn.style.backgroundColor = "#ff0000";
+    turnOnBtn.style.backgroundColor = "#0491e3";
+    clearInterval(clockInterval);
+    clockInterval = null;
+    localStorage.setItem('clockStatus', 'off');
+}
+
+initializeClock();
+
+turnOnBtn.addEventListener("click", turnOn);
+turnOffBtn.addEventListener("click", turnOff);
