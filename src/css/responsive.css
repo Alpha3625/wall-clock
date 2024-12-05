@@ -5,32 +5,41 @@
 }
 
 @media screen and (max-width: 500px) {
-    .main {
-        padding-top: 100px;
-    }
-
     .clock {
-        height: 400px;
+        max-width: 300px;
+        height: 300px;
+        box-shadow: 0 0 100px 30px rgb(0, 136, 255), 0 -15px 15px rgba(134, 134, 134, 0.35),
+        inset 0 -15px 15px rgba(25, 25, 25, 0.9), 0 15px 15px rgba(134, 134, 134, 0.35), inset 0 15px 15px rgba(25, 25, 25, 0.9);
     }
 
     .clock>.hour,
     .hr {
-        width: 160px;
-        height: 160px;
+        width: 60px;
+        height: 150px;
     }
 
     .clock>.min,
     .mn {
-        width: 230px;
-        height: 230px;
+        width: 60px;
+        height: 210px;
+    }
+
+    .clock>.sec,
+    .sc {
+        width: 60px;
+        height: 210px;
     }
 
     .hr:before {
-        height: 80px;
+        height: 100px;
     }
 
     .mn:before {
-        height: 120px;
+        height: 130px;
+    }
+
+    .sc:before {
+        height: 130px;
     }
 }
 
@@ -38,14 +47,16 @@
     .main {
         padding-top: 50px;
     }
+}
 
-    .clock {
-        height: 350px;
+@media screen and (max-height: 850px) {
+    .main {
+        padding-top: 150px;
     }
 }
 
-@media screen and (max-width: 320px) {
-    .clock {
-        height: 300px;
+@media screen and (max-height: 568px) {
+    .main {
+        padding-top: 30px;
     }
 }

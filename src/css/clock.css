@@ -35,20 +35,20 @@
 
 .clock>.hour,
 .hr {
-    width: 230px;
-    height: 230px;
+    width: 240px;
+    height: 240px;
 }
 
 .clock>.min,
 .mn {
-    width: 330px;
-    height: 330px;
+    width: 380px;
+    height: 380px;
 }
 
 .clock>.sec,
 .sc {
-    width: 230px;
-    height: 230px;
+    width: 380px;
+    height: 380px;
 }
 
 .hr,
@@ -64,8 +64,7 @@
     content: '';
     position: absolute;
     width: 8px;
-    /* height: 80px; */
-    height: 150px;
+    height: 160px;
     background-color: #000000;
     z-index: 10;
     border-radius: 6px;
@@ -75,8 +74,7 @@
     content: '';
     position: absolute;
     width: 4px;
-    /* height: 120px; */
-    height: 200px;
+    height: 230px;
     background-color: #FFAA4C;
     z-index: 11;
     border-radius: 6px;
@@ -86,7 +84,7 @@
     content: '';
     position: absolute;
     width: 2px;
-    height: 150px;
+    height: 230px;
     background-color: #ff0000;
     z-index: 12;
     border-radius: 6px 6px 0 0;
