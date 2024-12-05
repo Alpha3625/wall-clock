@@ -12,6 +12,26 @@
     .clock {
         height: 400px;
     }
+
+    .clock>.hour,
+    .hr {
+        width: 160px;
+        height: 160px;
+    }
+
+    .clock>.min,
+    .mn {
+        width: 230px;
+        height: 230px;
+    }
+
+    .hr:before {
+        height: 80px;
+    }
+
+    .mn:before {
+        height: 120px;
+    }
 }
 
 @media screen and (max-width: 375px) {
