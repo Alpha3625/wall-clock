@@ -1,29 +1,32 @@
-function updateClock() {
+const clockElements = {
+    hourHand: document.getElementById('hr'),
+    minuteHand: document.getElementById('mn'),
+    secondHand: document.getElementById('sc'),
+    turnOnBtn: document.getElementById("turn-on-button"),
+    turnOffBtn: document.getElementById("turn-off-button"),
+    lights: document.getElementById("lights"),
+};
+
+function updateClock(resetPosition) {
     const now = new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
-    const hourHand = document.getElementById('hr');
-    const minuteHand = document.getElementById('mn');
-    const secondHand = document.getElementById('sc');
+    const hourDegrees = resetPosition ? (30 * (hours % 12) + 0.5 * minutes) : 0;
+    const minuteDegrees = resetPosition ? (6 * minutes + 0.1 * seconds) : 0;
+    const secondDegrees = resetPosition ? (6 * seconds) : 0;
 
-    const hourDegrees = 30 * (hours % 12) + 0.5 * minutes;
-    const minuteDegrees = 6 * minutes + 0.1 * seconds;
-    const secondDegrees = 6 * seconds;
-
-    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-    minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
-    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+    clockElements.hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    clockElements.minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+    clockElements.secondHand.style.transform = `rotate(${secondDegrees}deg)`;
 }
 
 let clockInterval = null;
-const turnOnBtn = document.getElementById("turn-on-button");
-const turnOffBtn = document.getElementById("turn-off-button");
-turnOffBtn.style.backgroundColor = "#ff0000";
 
 function initializeClock() {
     const isClockOn = localStorage.getItem('clockStatus') === 'on';
+    updateButtonStyles(isClockOn);
     if (isClockOn) {
         turnOn();
     } else {
@@ -31,24 +34,33 @@ function initializeClock() {
     }
 }
 
+function updateButtonStyles(isOn) {
+    const {turnOnBtn, turnOffBtn} = clockElements;
+    turnOnBtn.style.backgroundColor = isOn ? "#008000" : "#0491e3";
+    turnOffBtn.style.backgroundColor = isOn ? "#0491e3" : "#ff0000";
+}
+
 function turnOn() {
     if (!clockInterval) {
-        turnOnBtn.style.backgroundColor = "#008000";
-        turnOffBtn.style.backgroundColor = "#0491e3";
-        clockInterval = setInterval(updateClock, 1000);
+        clockInterval = setInterval(() => updateClock(true), 1000);
+        clockElements.lights.classList.add("active");
+        updateButtonStyles(true);
         localStorage.setItem('clockStatus', 'on');
     }
 }
 
 function turnOff() {
-    turnOffBtn.style.backgroundColor = "#ff0000";
-    turnOnBtn.style.backgroundColor = "#0491e3";
-    clearInterval(clockInterval);
-    clockInterval = null;
+    if (clockInterval) {
+        clearInterval(clockInterval);
+        clockInterval = null;
+    }
+    updateClock(false);
+    clockElements.lights.classList.remove("active");
+    updateButtonStyles(false);
     localStorage.setItem('clockStatus', 'off');
 }
 
 initializeClock();
 
-turnOnBtn.addEventListener("click", turnOn);
-turnOffBtn.addEventListener("click", turnOff);
+clockElements.turnOnBtn.addEventListener("click", turnOn);
+clockElements.turnOffBtn.addEventListener("click", turnOff);
