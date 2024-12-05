@@ -49,7 +49,7 @@
     }
 }
 
-@media screen and (max-height: 850px) {
+@media screen and (min-height: 850px) {
     .main {
         padding-top: 150px;
     }
