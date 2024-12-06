@@ -7,15 +7,15 @@ const clockElements = {
     lights: document.getElementById("lights"),
 };
 
-function updateClock(resetPosition) {
+function updateClock(handsPosition) {
     const now = new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
-    const hourDegrees = resetPosition ? (30 * (hours % 12) + 0.5 * minutes) : 0;
-    const minuteDegrees = resetPosition ? (6 * minutes + 0.1 * seconds) : 0;
-    const secondDegrees = resetPosition ? (6 * seconds) : 0;
+    const hourDegrees = handsPosition ? (30 * (hours % 12) + 0.5 * minutes) : 0;
+    const minuteDegrees = handsPosition ? (6 * minutes + 0.1 * seconds) : 0;
+    const secondDegrees = handsPosition ? (6 * seconds) : 0;
 
     clockElements.hourHand.style.transform = `rotate(${hourDegrees}deg)`;
     clockElements.minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
@@ -50,10 +50,8 @@ function turnOn() {
 }
 
 function turnOff() {
-    if (clockInterval) {
-        clearInterval(clockInterval);
-        clockInterval = null;
-    }
+    clearInterval(clockInterval);
+    clockInterval = null;
     updateClock(false);
     clockElements.lights.classList.remove("active");
     updateButtonStyles(false);
