@@ -3,13 +3,13 @@
     max-width: 500px;
     height: 500px;
     margin: 0 auto;
-    background: #0491e3 url("../assets/clock-face.jpg") center no-repeat;
+    background: #ffffff url("../assets/clock-face.jpg") center no-repeat;
     background-size: 100% 100%;
     border: 10px solid #0491e3;
     border-radius: 50%;
-    -webkit-box-shadow: 0 0 100px 30px rgb(0, 136, 255), 0 -15px 15px rgba(134, 134, 134, 0.35),
+    -webkit-box-shadow: 0 0 60px 30px rgb(0, 136, 255), 0 -15px 15px rgba(134, 134, 134, 0.35),
         inset 0 -15px 15px #191919, 0 15px 15px rgba(134, 134, 134, 0.35), inset 0 15px 15px #191919;
-            box-shadow: 0 0 100px 30px rgb(0, 136, 255), 0 -15px 15px rgba(134, 134, 134, 0.35),
+            box-shadow: 0 0 60px 30px rgb(0, 136, 255), 0 -15px 15px rgba(134, 134, 134, 0.35),
         inset 0 -15px 15px #191919, 0 15px 15px rgba(134, 134, 134, 0.35), inset 0 15px 15px #191919;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -20,7 +20,6 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    border-radius: 50%;
     position: relative;
 }
 
